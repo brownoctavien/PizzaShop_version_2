@@ -1,0 +1,71 @@
+.root{
+    -fx-font-size: 10pt;
+    -fx-font-family: "Courier New";
+    -fx-base: rgb(157, 102, 18);
+    -fx-background: rgb(225, 228, 203);
+
+    -fx-border-width: 0 400 0 400; //top, right, bottom, left
+  //  -fx-border-width: 10;
+  -fx-border-color: rgba(165, 166, 82, 0.51);
+}
+.label{
+    -fx-text-fill: #894619;
+
+}
+.button{
+    -fx-text-fill: #006464;
+    -fx-background-color: #c3c461;
+    -fx-background-radius: 20;
+  //  -fx-border-color: white;
+    -fx-padding: 5;
+    -fx-pref-width: 100;
+    -fx-min-height: 50;
+}
+
+#assignOrder_btn{
+    -fx-pref-width: 200;
+    -fx-min-height: 100;
+}
+#generateReports_btn{
+    -fx-pref-width: 200;
+    -fx-min-height: 100;
+}
+#add_customer_btn{
+    -fx-pref-width: 150;
+    -fx-min-height: 50;
+}
+
+
+
+
+
+#Title_lbl{
+    -fx-font-size: 25pt;
+    -fx-font-weight: bold;
+}
+#subtitle_lbl{
+    -fx-font-size: 20pt;
+    -fx-font-weight: bold;
+}
+
+#sSignup_btn{
+    -fx-background-color: red;
+    -fx-background-radius: 6;
+    -fx-text-fill: white;
+}
+#status_lbl{
+    -fx-font-size: 10;
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+
+}
+#Signup_lbl{
+    -fx-font-family: "Arial Black";
+    -fx-font-size: 30;
+
+}
+#cancel_btn{
+    -fx-background-color: red;
+    -fx-background-radius: 6;
+    -fx-text-fill: white;
+}

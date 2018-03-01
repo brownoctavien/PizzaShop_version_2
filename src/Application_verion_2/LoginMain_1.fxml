@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="868.0" prefWidth="1099.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application_verion_2.LoginController">
+   <center>
+      <GridPane alignment="CENTER" prefHeight="496.0" prefWidth="733.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.0" minWidth="10.0" prefWidth="181.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="90.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="63.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="43.0" minHeight="8.0" prefHeight="37.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="134.0" minHeight="0.0" prefHeight="12.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="name_txt" prefHeight="25.0" prefWidth="63.0" promptText="Username" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+            <Button fx:id="login_btn" mnemonicParsing="false" onAction="#Login" prefHeight="47.0" prefWidth="83.0" text="Login" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER" />
+            <Button fx:id="signup_btn" mnemonicParsing="false" onAction="#Signup" prefHeight="47.0" prefWidth="83.0" text="Sign up" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER" />
+            <Label prefHeight="17.0" prefWidth="67.0" text="Username" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER" />
+            <Label prefHeight="17.0" prefWidth="67.0" text="Password" BorderPane.alignment="CENTER" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER" />
+            <PasswordField fx:id="password_txt" promptText="Password" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER" />
+            <Label fx:id="isConnected" alignment="CENTER" contentDisplay="CENTER" text="Label" GridPane.rowIndex="5" />
+            <Label fx:id="status_lbl" alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="17.0" prefWidth="187.0" textOverrun="WORD_ELLIPSIS" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="50.0" />
+         </padding>
+      </GridPane>
+   </center>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
+   <top>
+      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+             <ImageView fx:id="pizzalogo_img" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                 <image>
+                     <Image url="img/pizzashop logo.png">
+                     </Image>
+                 </image>
+             </ImageView>
+            <Label fx:id="Title_lbl" text="Pizza Shop" />
+            <Separator prefHeight="21.0" prefWidth="807.0" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+      </VBox>
+   </top>
+</BorderPane>
