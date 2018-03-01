@@ -1,5 +1,6 @@
 package static_class;
 
+
 public class Delivery extends OrderInfo
 {
 
@@ -37,6 +38,10 @@ public class Delivery extends OrderInfo
     public int getPhoneNumber()
     {
         return phoneNumber;
+    }
+
+    private makeID(){
+
     }
 
 } // end of Delivery class
