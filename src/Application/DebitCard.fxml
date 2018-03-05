@@ -2,19 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 
-
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application_verion_2.CreditCardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.DebitCardController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
@@ -35,16 +30,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0">
                <children>
-                  <ComboBox prefWidth="150.0" promptText="Card Type" >
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="Visa" />
-                           <String fx:value="Master Card" />
-                           <String fx:value="American Express" />
-                           <String fx:value="Discover" />
-                        </FXCollections>
-                     </items>
-                  </ComboBox>
+                  <TextField fx:id="PIN_txt" prefHeight="25.0" prefWidth="200.0" promptText="PIN Number" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0">
@@ -60,7 +46,7 @@
    <top>
       <VBox alignment="CENTER" prefHeight="9.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="Title_lbl" text="Credit Card" />
+            <Label fx:id="Title_lbl" text="Debt Card" />
             <Separator prefWidth="200.0" />
          </children>
       </VBox>

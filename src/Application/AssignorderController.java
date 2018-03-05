@@ -1,4 +1,4 @@
-package Application_verion_2;
+package Application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +10,7 @@ import javafx.scene.input.KeyEvent;
 import static_class.Customer;
 import static_class.OrderInfo;
 import static_class.Transaction;
+import  static_class.Delivery;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -119,7 +120,13 @@ public class AssignorderController {
 
 
             // determine saletype and store id accordingly to type in either datdabase: inhouse/takeout/delievery
-            if(saleType_cbox.getValue().equals("Delievery")){}
+            if(saleType_cbox.getValue().equals("Delievery")){
+                //make random delieveryID
+                Delivery delivery = new Delivery();
+                delivery.makeTypeID();
+                String delieveryid = String.valueOf(delivery.getOrderID());
+                //assign that to database
+            }
             else if(saleType_cbox.getValue().equals("Take Out")){}
             else if(saleType_cbox.getValue().equals("In House")){}
 

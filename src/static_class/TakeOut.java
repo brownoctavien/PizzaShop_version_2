@@ -3,18 +3,37 @@ public class TakeOut extends OrderInfo
 {
 
     // creating variables
-    final int typeID = 96700477;
-    int boxAmount = 0;
-    int phoneNumber = 0;
+    private String typeID;
+    int boxAmount;
+    int phoneNumber;
 
 
     // default constructor
     public TakeOut()
     {
-
+        typeID = "T";
+        boxAmount =0;
+        phoneNumber =0;
     }
 
-
+    //getter and setter
+    @Override
+    public String getTypeID() {
+        String id = typeID +getOrderID();
+        return id;
+    }
+    public int getBoxAmount(){
+        return boxAmount;
+    }
+    public int getPhoneNumber(){
+        return phoneNumber;
+    }
+    public void setBoxAmount(int amount){
+        this.boxAmount = amount;
+    }
+    public  void setPhoneNumber(int phoneNumber){
+        this.phoneNumber = phoneNumber;
+    }
 
 
 } // end TakeOut class

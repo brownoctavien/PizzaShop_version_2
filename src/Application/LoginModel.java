@@ -1,4 +1,4 @@
-package Application_verion_2;
+package Application;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,19 +1,21 @@
 package static_class;
 
-public class DebitCard extends Customer
-{
+public class DebitCard {
 
     // create variables
-    String nameOnDebitCard;
-    int debitCardNumber;
-    int debitCardExpirationDate;
+    String name;
+    int cardNumber;
+    int cardExpirationDate;
     int pinNumber;
 
 
     // default constructor
-    public void DebitCard()
+    public DebitCard(String name, int cardNumber, int cardExpirationDate, int pinNumber)
     {
-
+        this.name = name;
+        this.cardNumber = cardNumber;
+        this.cardExpirationDate = cardExpirationDate;
+        this.pinNumber = pinNumber;
     }
 
     // Verification method
@@ -25,17 +27,17 @@ public class DebitCard extends Customer
     // setters and getters
     public void setNameOnCard(String nameOnDebitCard)
     {
-        this.nameOnDebitCard = nameOnDebitCard;
+        this.name= nameOnDebitCard;
     }
 
     public void setDebitCardNumber(int debitCardNumber)
     {
-        this.debitCardNumber = debitCardNumber;
+        this.cardNumber = debitCardNumber;
     }
 
     public void setDebitCardExpirationDate(int debitCardExpirationDate)
     {
-        this.debitCardExpirationDate = debitCardExpirationDate;
+        this.cardExpirationDate = debitCardExpirationDate;
     }
 
     public void setPinNumber(int pinNumber)
@@ -45,17 +47,17 @@ public class DebitCard extends Customer
 
     public String getNameOnDebitCard()
     {
-        return nameOnDebitCard;
+        return name;
     }
 
     public int getDebitCardNumber()
     {
-        return debitCardNumber;
+        return cardNumber;
     }
 
     public int getDebitCardExpirationDate()
     {
-        return debitCardExpirationDate;
+        return cardExpirationDate;
     }
 
     public int getPinNumber()

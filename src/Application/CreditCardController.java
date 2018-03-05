@@ -1,11 +1,12 @@
-package Application_verion_2;
+package Application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class DebitCardController {
+public class CreditCardController {
 
     @FXML
     private TextField name_txt;
@@ -14,8 +15,7 @@ public class DebitCardController {
     @FXML
     private TextField expiration_txt; // only accept number
     @FXML
-    private TextField PIN_txt; // only accept number
-
+    private ComboBox type_cbox;
 
 
 

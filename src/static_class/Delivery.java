@@ -6,16 +6,17 @@ public class Delivery extends OrderInfo
 
 
     // creating variables
-    int typeID;
-    int boxAmount;
-    int phoneNumber;
+    private String typeID;
+
+    private int boxAmount;
+    private int  phoneNumber;
 
 
 
     // default constructor
     public Delivery()
     {
-
+        typeID = "D";
     }
 
 
@@ -36,12 +37,20 @@ public class Delivery extends OrderInfo
     }
 
     public int getPhoneNumber()
+
     {
         return phoneNumber;
     }
 
-    private makeID(){
+    @Override
+    public String getTypeID() {
+        String id = typeID +getOrderID();
+        return id;
+    }
 
+
+    public void makeTypeID() {
+        super.makeOrderID();
     }
 
 } // end of Delivery class

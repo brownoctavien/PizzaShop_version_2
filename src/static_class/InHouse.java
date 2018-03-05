@@ -4,13 +4,19 @@ public class InHouse extends OrderInfo
 {
 
     // typeID
-    int typeID;
+    private  String typeID;
 
 
     // default constructor
     public InHouse()
     {
+        typeID = "H";
+    }
 
+    @Override
+    public String getTypeID() {
+        String id = typeID +getOrderID();
+        return id;
     }
 
 } // end of InHouse class

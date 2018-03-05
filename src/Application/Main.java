@@ -1,4 +1,4 @@
-package Application_verion_2;
+package Application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,8 +24,8 @@ public class Main extends Application {
        primaryStage.setScene(scene);
 
 
-       // primaryStage.setMaximized(true);
-        primaryStage.setFullScreen(true);
+       primaryStage.setMaximized(true);
+       // primaryStage.setFullScreen(true);
         primaryStage.show();
 
 

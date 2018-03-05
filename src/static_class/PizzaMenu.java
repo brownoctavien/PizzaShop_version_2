@@ -1,6 +1,5 @@
 package static_class;
-public class PizzaMenu extends Customer
-{
+public class PizzaMenu {
 
     // creating variables
     String topping;
