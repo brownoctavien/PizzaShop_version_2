@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.DebitCardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.DebitCardController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
@@ -41,7 +41,10 @@
                   <Insets left="150.0" />
                </padding>
             </HBox>
-         </children></VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets top="100.0" />
+         </BorderPane.margin></VBox>
    </center>
    <top>
       <VBox alignment="CENTER" prefHeight="9.0" prefWidth="600.0" BorderPane.alignment="CENTER">

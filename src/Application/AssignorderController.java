@@ -54,22 +54,22 @@ public class AssignorderController {
 
 
     public void AddCustomer(ActionEvent event) throws SQLException {
-        if (saleType_cbox.getValue() != null && pizzaSize_cbox.getValue() != null && topping_cbox.getValue() != null && !quantity_txt.getText().isEmpty() && !name_txt.getText().isEmpty() && orderCount<=0 ) {
+        if (saleType_cbox.getValue() != null && pizzaSize_cbox.getValue() != null && topping_cbox.getValue() != null && !quantity_txt.getText().isEmpty() && !name_txt.getText().isEmpty() && orderCount<=1 ) {
             orderCount =1;
             //assign name to customer
             customer.setName(name_txt.getText());
             // make random orderId
-            order.makeOrderID();
+            order.makeID();
             String orderid = String.valueOf(order.getOrderID());
             //make random customerId
             customer.makeID();
             String customerid = String.valueOf(customer.getID());
 
-            // assign  id to database: orderinfo, customer
-            // assign name to database: customer
+            // assign  id to database: orderinfo: id, customerID; customer: customerID
+            // assign name to database: customer: name;
             PreparedStatement preparedStatement = null;
             PreparedStatement preparedStatement1 = null;
-            String query = "INSERT INTO OrderInfo (OrderID) VALUES (?) ";
+            String query = "INSERT INTO OrderInfo (OrderID,CustomerID) VALUES (?,?) ";
             String  query1 = "INSERT INTO Customer (CustomerID,Name) VALUES (?, ?) ";
 
             try {
@@ -78,6 +78,7 @@ public class AssignorderController {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement1 = connection.prepareStatement(query1);
                 preparedStatement.setString(1, orderid);
+                preparedStatement.setString(2, customerid);
                 preparedStatement1.setString(1,customerid);
                 preparedStatement1.setString(2, name_txt.getText());
 
@@ -125,6 +126,7 @@ public class AssignorderController {
                 Delivery delivery = new Delivery();
                 delivery.makeTypeID();
                 String delieveryid = String.valueOf(delivery.getOrderID());
+                System.out.print("delivery ID: "+ delieveryid);
                 //assign that to database
             }
             else if(saleType_cbox.getValue().equals("Take Out")){}
@@ -141,7 +143,9 @@ public class AssignorderController {
             System.out.println("Only 1 order is allowed");
         }
         else{
-            System.out.println("There is nothing to add");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select and enter values");
+            alert.showAndWait();
         }
 
 

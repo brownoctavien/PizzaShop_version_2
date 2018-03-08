@@ -50,7 +50,7 @@ public class Delivery extends OrderInfo
 
 
     public void makeTypeID() {
-        super.makeOrderID();
+        super.makeID();
     }
 
 } // end of Delivery class

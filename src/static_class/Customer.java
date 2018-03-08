@@ -1,5 +1,7 @@
 package static_class;
 
+import java.util.Random;
+
 public class Customer
 {
 
@@ -30,10 +32,10 @@ public class Customer
 
 
     // method for making random customerID
-    public void makeID(){ // works on 1/25/18
-        int id = ID;
-        id = (int) ((int) this.getID() * 1.314234);
-        id =  (int) (Math.random() * id);
+    public  void makeID()
+    {
+        Random rand = new Random();
+        int id = rand.nextInt(1001)+ 1; //random number 1-1000;
         setID(id);
     }
 

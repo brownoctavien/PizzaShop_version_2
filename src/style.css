@@ -35,7 +35,10 @@
     -fx-min-height: 50;
 }
 
-
+#openCustomer_btn{
+    -fx-pref-width: 150;
+    -fx-min-height: 50;
+}
 
 
 

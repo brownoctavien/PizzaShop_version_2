@@ -23,7 +23,7 @@ public class OrderInfo extends Customer
     }
 
     // method for random orderID numbers
-    public  void makeOrderID()
+    public  void makeID()
     {
         Random rand = new Random();
         int id = rand.nextInt(1001)+ 1; //random number 1-1000;

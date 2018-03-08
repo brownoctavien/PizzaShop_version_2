@@ -80,13 +80,14 @@
       </VBox>
    </top>
    <right>
-      <HBox alignment="CENTER_LEFT" prefHeight="753.0" prefWidth="170.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="753.0" prefWidth="161.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="add_customer_btn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AddCustomer" text="Add Customer" />
+            <Button fx:id="openCustomer_btn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="222.0" text="Customer Menu" />
+            <Button fx:id="add_customer_btn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AddCustomer" prefHeight="50.0" prefWidth="181.0" text="Add Customer" />
          </children>
-         <padding>
-            <Insets bottom="100.0" />
-         </padding>
-      </HBox>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
    </right>
 </BorderPane>
