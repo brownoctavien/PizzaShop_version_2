@@ -25,7 +25,7 @@ public class Main extends Application {
 
 
        primaryStage.setMaximized(true);
-       // primaryStage.setFullScreen(true);
+       // primaryStage.setFullScreen(true);//this crash on mac
         primaryStage.show();
 
 

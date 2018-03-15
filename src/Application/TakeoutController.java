@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 public class TakeoutController {
 
@@ -27,5 +28,39 @@ public class TakeoutController {
 
         Main main = new Main();
         main.createWindow("AssignOrder_2_2.fxml");
+    }
+
+
+
+    public void TextFieldKeyType(KeyEvent event){
+        String  c = event.getCharacter();
+        char[] s= c.toCharArray();
+
+        if(!Character.isDigit(s[0])){
+            event.consume();
+        }
+    }
+
+    public void TextFieldPhoneType(KeyEvent event){
+        String  c = event.getCharacter();
+        char[] s= c.toCharArray();
+
+        int count =0;
+        String phone = null;
+
+        if(!Character.isDigit(s[0])){
+            event.consume();
+            count++;
+        }
+        else{
+            phone += c;
+        }
+
+        //if(count == 3){
+            //put a - in after the 3rd number
+        //   phone= phone + "-";
+       //    count=0;
+       // }
+        phoneNumb_txt.setText(phone);
     }
 }
