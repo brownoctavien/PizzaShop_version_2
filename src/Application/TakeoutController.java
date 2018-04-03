@@ -56,11 +56,7 @@ public class TakeoutController {
             phone += c;
         }
 
-        //if(count == 3){
-            //put a - in after the 3rd number
-        //   phone= phone + "-";
-       //    count=0;
-       // }
+
         phoneNumb_txt.setText(phone);
     }
 }
