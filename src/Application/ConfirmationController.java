@@ -8,6 +8,10 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import static_class.Customer;
+import static_class.Transaction;
+
+
 
 public class ConfirmationController implements Initializable{
 
@@ -22,8 +26,8 @@ public class ConfirmationController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        name_txt.setText("NONE");
-        amountPaid_txt.setText("00000");
+        name_txt.setText(Customer.getName());
+        amountPaid_txt.setText(String.valueOf("$"+ Transaction.getCustomerPaymentAmount()));
         pizzaOrder_txt.setText("NONE");
         paymentType_txt.setText("NONE");
     }

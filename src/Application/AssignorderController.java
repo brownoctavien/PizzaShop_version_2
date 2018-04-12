@@ -35,8 +35,6 @@ public class AssignorderController {
 
     Connection connection;
 
-    private OrderInfo order;
-    private Customer customer;
 
     private int orderCount ;
 
@@ -46,8 +44,6 @@ public class AssignorderController {
             System.out.println("Connection not successful");
             System.exit(1);
         }
-        order = new OrderInfo();
-        customer = new Customer();
         orderCount=0;
     }
 
@@ -57,19 +53,19 @@ public class AssignorderController {
         if (saleType_cbox.getValue() != null && pizzaSize_cbox.getValue() != null && topping_cbox.getValue() != null && !quantity_txt.getText().isEmpty() && !name_txt.getText().isEmpty() && orderCount<=1 ) {
             orderCount =1;
             //assign name to customer
-            customer.setName(name_txt.getText());
+            Customer.setName(name_txt.getText());
             // make random orderId
-            order.makeID();
-            String orderid = String.valueOf(order.getOrderID());
+            OrderInfo.makeID();
+            String orderid = String.valueOf(OrderInfo.getID());
             //make random customerId
-            customer.makeID();
-            String customerid = String.valueOf(customer.getID());
+            Customer.makeID();
+            String customerid = String.valueOf(Customer.getID());
 
             // assign  id to database: orderinfo: id, customerID; customer: customerID
             // assign name to database: customer: name;
             PreparedStatement preparedStatement = null;
             PreparedStatement preparedStatement1 = null;
-            String query = "INSERT INTO OrderInfo (OrderID,CustomerID) VALUES (?,?) ";
+            String query = "INSERT INTO OrderInfo (OrderID,CustomerID,PaymentAmount) VALUES (?,?,?) ";
             String  query1 = "INSERT INTO Customer (CustomerID,Name) VALUES (?, ?) ";
 
             try {
@@ -79,6 +75,7 @@ public class AssignorderController {
                 preparedStatement1 = connection.prepareStatement(query1);
                 preparedStatement.setString(1, orderid);
                 preparedStatement.setString(2, customerid);
+                preparedStatement.setString(3,"0");
                 preparedStatement1.setString(1,customerid);
                 preparedStatement1.setString(2, name_txt.getText());
 
@@ -125,7 +122,7 @@ public class AssignorderController {
                 //make random delieveryID
                 Delivery delivery = new Delivery();
                 delivery.makeTypeID();
-                String delieveryid = String.valueOf(delivery.getOrderID());
+                String delieveryid = String.valueOf(delivery.getTypeID());
                 System.out.print("delivery ID: "+ delieveryid);
                 //assign that to database
             }
@@ -135,7 +132,7 @@ public class AssignorderController {
             //pop up message: Customer is added
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Add Customer");
-            alert.setContentText("Customer name: "+ customer.getName() + " with an id of: "+ customer.getID()+ " and order id of: "+ order.getOrderID()+ " was added");
+            alert.setContentText("Customer name: "+ Customer.getName() + " with an id of: "+ Customer.getID()+ " and order id of: "+ OrderInfo.getID()+ " was added");
             alert.showAndWait();
 
         }

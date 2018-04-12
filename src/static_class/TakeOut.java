@@ -19,7 +19,7 @@ public class TakeOut extends OrderInfo
     //getter and setter
     @Override
     public String getTypeID() {
-        String id = typeID +getOrderID();
+        String id = typeID +getID();
         return id;
     }
     public int getBoxAmount(){

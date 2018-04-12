@@ -15,7 +15,7 @@ public class InHouse extends OrderInfo
 
     @Override
     public String getTypeID() {
-        String id = typeID +getOrderID();
+        String id = typeID +getID();
         return id;
     }
 

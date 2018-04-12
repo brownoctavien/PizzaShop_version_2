@@ -2,28 +2,25 @@ package static_class;
 
 import java.util.Random;
 
-public class OrderInfo extends Customer
+public class OrderInfo
 {
     // creating variables
-   private int  orderID ;
-   private String typeID;
+   static private int  ID =0 ;
+   private static String typeID = null;
 
-    // default constructor
-    public OrderInfo()
-    {
-        orderID = 0;
-        typeID = null;
+
+    public OrderInfo(){
+
     }
 
-    // constructor for creating Order object
     public OrderInfo(int orderID, String typeID)
     {
-        this.orderID = orderID;
+        this.ID= orderID;
         this.typeID = typeID;
     }
 
     // method for random orderID numbers
-    public  void makeID()
+    public  static void makeID()
     {
         Random rand = new Random();
         int id = rand.nextInt(1001)+ 1; //random number 1-1000;
@@ -32,14 +29,15 @@ public class OrderInfo extends Customer
 
 
     // getter and setter methods
-    public  void setOrderID(int orderID) {
-        this.orderID = orderID;
+    public static void setOrderID(int orderID) {
+        OrderInfo.ID = orderID;
     }
-    public void setTypeID(String typeID) {
-        this.typeID = typeID;
+    public static void setTypeID(String typeID) {
+        OrderInfo.typeID = typeID;
     }
-    public  int getOrderID() {
-        return orderID;
+    public static int getID()
+    {
+        return ID;
     }
     public String getTypeID() {
         return typeID;
