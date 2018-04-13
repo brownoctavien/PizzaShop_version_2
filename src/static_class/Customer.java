@@ -32,6 +32,11 @@ public class Customer extends OrderInfo
         Customer.ID = ID;
     }
 
+    public static int getCustomerID()
+    {
+        return ID;
+    }
+
     public static void setPhone(int phone)
     {
         Customer.phone = phone;

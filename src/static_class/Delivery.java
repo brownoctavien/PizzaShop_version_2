@@ -44,7 +44,7 @@ public class Delivery extends OrderInfo
 
     @Override
     public String getTypeID() {
-        String id = typeID +getID();
+        String id = typeID + getID();
         return id;
     }
 
