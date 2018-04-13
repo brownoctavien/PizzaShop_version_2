@@ -12,11 +12,11 @@ public class Customer extends OrderInfo
 
 
     // method for making random customerID
-    public static void makeID()
+    public static void makeCustomerID()
     {
         Random rand = new Random();
         int id = rand.nextInt(1001)+ 1; //random number 1-1000;
-        setID(id);
+        setCustomerID(id);
     }
 
     // setter methods
@@ -28,7 +28,7 @@ public class Customer extends OrderInfo
         Customer.address = address;
     }
 
-    public static void setID(int ID) {
+    public static void setCustomerID(int ID) {
         Customer.ID = ID;
     }
 
@@ -47,7 +47,9 @@ public class Customer extends OrderInfo
         return address;
     }
 
-
+    public static int getCustomerID() {
+        return ID;
+    }
 
     public static int getPhone()
     {

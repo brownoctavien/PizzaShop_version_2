@@ -5,11 +5,12 @@ import java.util.Random;
 public class OrderInfo
 {
     // creating variables
-   static private int  ID =0 ;
+   static private int  ID = 0 ;
    private static String typeID = null;
 
 
-    public OrderInfo(){
+    public OrderInfo()
+    {
 
     }
 
@@ -20,7 +21,7 @@ public class OrderInfo
     }
 
     // method for random orderID numbers
-    public  static void makeID()
+    public  static void makeOrderID()
     {
         Random rand = new Random();
         int id = rand.nextInt(1001)+ 1; //random number 1-1000;
@@ -29,17 +30,23 @@ public class OrderInfo
 
 
     // getter and setter methods
-    public static void setOrderID(int orderID) {
+    public static void setOrderID(int orderID)
+    {
         OrderInfo.ID = orderID;
     }
-    public static void setTypeID(String typeID) {
+    public static void setTypeID(String typeID)
+    {
+
         OrderInfo.typeID = typeID;
     }
     public static int getID()
     {
+
         return ID;
     }
-    public String getTypeID() {
+    public String getTypeID()
+    {
+
         return typeID;
     }
 

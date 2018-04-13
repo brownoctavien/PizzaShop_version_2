@@ -55,11 +55,11 @@ public class AssignorderController {
             //assign name to customer
             Customer.setName(name_txt.getText());
             // make random orderId
-            OrderInfo.makeID();
+            OrderInfo.makeOrderID();
             String orderid = String.valueOf(OrderInfo.getID());
             //make random customerId
-            Customer.makeID();
-            String customerid = String.valueOf(Customer.getID());
+            Customer.makeCustomerID();
+            String customerid = String.valueOf(Customer.getCustomerID());
 
             // assign  id to database: orderinfo: id, customerID; customer: customerID
             // assign name to database: customer: name;
@@ -132,7 +132,7 @@ public class AssignorderController {
             //pop up message: Customer is added
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Add Customer");
-            alert.setContentText("Customer name: "+ Customer.getName() + " with an id of: "+ Customer.getID()+ " and order id of: "+ OrderInfo.getID()+ " was added");
+            alert.setContentText("Customer name: "+ Customer.getName() + " with an id of: "+ Customer.getCustomerID()+ " and order id of: "+ OrderInfo.getID()+ " was added");
             alert.showAndWait();
 
         }

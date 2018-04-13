@@ -32,3 +32,5 @@ public class Cash extends Customer
         return amount;
     }
 } // end of class Cash
+
+// this is a test
