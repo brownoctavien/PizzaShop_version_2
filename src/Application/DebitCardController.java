@@ -6,7 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-public class DebitCardController {
+public class DebitCardController
+{
 
     @FXML
     private TextField name_txt;
@@ -20,7 +21,8 @@ public class DebitCardController {
 
 
 
-    public void next(ActionEvent event) throws Exception {
+    public void next(ActionEvent event) throws Exception
+    {
         if (!name_txt.getText().isEmpty() && !number_txt.getText().isEmpty() && !expiration_txt.getText().isEmpty() && !PIN_txt.getText().isEmpty()) {
             ((Node) event.getSource()).getScene().getWindow().hide();  //hide current window
 
@@ -29,7 +31,8 @@ public class DebitCardController {
 
             //add to database
         }
-        else {
+        else
+            {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter values");
             alert.showAndWait();

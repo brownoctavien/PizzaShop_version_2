@@ -6,7 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class CreditCardController {
+public class CreditCardController
+{
 
     @FXML
     private TextField name_txt;
@@ -19,7 +20,8 @@ public class CreditCardController {
 
 
 
-    public void next(ActionEvent event) throws Exception {
+    public void next(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();

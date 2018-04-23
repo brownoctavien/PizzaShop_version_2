@@ -36,7 +36,8 @@ public class AssignorderController {
 
     private int orderCount ;
 
-    public AssignorderController (){
+    public AssignorderController ()
+    {
         connection = SqliteConnection.Connector();
         if(connection == null) {
             System.out.println("Connection not successful");
@@ -47,15 +48,19 @@ public class AssignorderController {
 
 
 
-    public void AddCustomer(ActionEvent event) throws SQLException {
-        if (saleType_cbox.getValue() != null && pizzaSize_cbox.getValue() != null && topping_cbox.getValue() != null && !quantity_txt.getText().isEmpty() && !name_txt.getText().isEmpty() && orderCount<=1 ) {
+    public void AddCustomer(ActionEvent event) throws SQLException
+    {
+        if (saleType_cbox.getValue() != null && pizzaSize_cbox.getValue() != null && topping_cbox.getValue() != null
+                && !quantity_txt.getText().isEmpty() && !name_txt.getText().isEmpty() && orderCount<=1 )
+        {
             orderCount =1;
 
             // look in database and get pizza size/pizza topping price and assign that to a value
             PreparedStatement preparedStatement2 =null;
             ResultSet resultSet =null;
             String query3 = "select * from PizzaMenu where Topping = ? and Size = ?";
-            try {
+            try
+            {
                 preparedStatement2 =  connection.prepareStatement(query3);
                 preparedStatement2.setString(1, topping_cbox.getValue().toString());
                 preparedStatement2.setString(2,pizzaSize_cbox.getValue().toString());
@@ -74,9 +79,11 @@ public class AssignorderController {
                 System.out.println("price: "+ amount);
 
 
-            }catch (Exception e){
+            }catch (Exception e)
+            {
                 System.out.println(e);
-            } finally {
+            } finally
+            {
                 preparedStatement2.close();
                 resultSet.close();
             }
@@ -86,7 +93,9 @@ public class AssignorderController {
             Customer.setName(name_txt.getText());
             // make random orderId
             OrderInfo.makeID();
+
             System.out.println("Order1: "+ OrderInfo.getID());
+
             String orderid = String.valueOf(OrderInfo.getID());
             //make random customerId
             Customer.makeID();
@@ -94,7 +103,8 @@ public class AssignorderController {
 
             // determine saletype and store id accordingly to type in either datdabase: inhouse/takeout/delievery
             String orderType = null;
-            if(saleType_cbox.getValue().equals("Delievery")){
+            if(saleType_cbox.getValue().equals("Delievery"))
+            {
                 //make  delieveryID
                 Delivery.makeID();
 
@@ -102,14 +112,16 @@ public class AssignorderController {
                 System.out.print("delivery ID: "+ delieveryid);
                 orderType = delieveryid;
             }
-            else if(saleType_cbox.getValue().equals("Take Out")){
+            else if(saleType_cbox.getValue().equals("Take Out"))
+            {
                 //make Takeoutid
                 TakeOut.makeID();
                 String takeoutid = String.valueOf(TakeOut.getID());
                 System.out.println("take out: "+ takeoutid);
                 orderType = takeoutid;
             }
-            else if(saleType_cbox.getValue().equals("In House")){
+            else if(saleType_cbox.getValue().equals("In House"))
+            {
                 //make inhouseid
                 InHouse.makeID();
                 String inhouse = String.valueOf(InHouse.getID());
@@ -130,10 +142,12 @@ public class AssignorderController {
             alert.showAndWait();
 
         }
-        else if(orderCount>0){
+        else if(orderCount>0)
+        {
             System.out.println("Only 1 order is allowed");
         }
-        else{
+        else
+        {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please select and enter values");
             alert.showAndWait();
@@ -142,7 +156,8 @@ public class AssignorderController {
 
     }
 
-    public void back(ActionEvent event) throws Exception {
+    public void back(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();
@@ -150,7 +165,8 @@ public class AssignorderController {
 
     }
 
-    public void next(ActionEvent event) throws Exception {
+    public void next(ActionEvent event) throws Exception
+    {
         Main main = new Main();
 
         if (saleType_cbox.getValue() != null && pizzaSize_cbox.getValue() != null && topping_cbox.getValue() != null && !quantity_txt.getText().isEmpty() && !name_txt.getText().isEmpty() ) {
@@ -161,29 +177,35 @@ public class AssignorderController {
             PizzaMenu.setTopping(topping_cbox.getValue().toString());
             PizzaMenu.setCount(quantity_txt.getText());
 
-          if (saleType_cbox.getValue().equals("Delievery")) {
+          if (saleType_cbox.getValue().equals("Delievery"))
+          {
               main.createWindow("Delievery_2_2_1.fxml");
           }
-         else if (saleType_cbox.getValue().equals("Take Out")) {
+         else if (saleType_cbox.getValue().equals("Take Out"))
+         {
               main.createWindow("Takeout_2_2_2.fxml");
          }
-        else if (saleType_cbox.getValue().equals("In House")) {
+        else if (saleType_cbox.getValue().equals("In House"))
+        {
                 main.createWindow("Payment_3.fxml");
           }
         }
 
-     else{
+     else
+         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please select and enter values");
             alert.showAndWait();
         }
      }
 
-    public void TextFieldKeyType(KeyEvent event){ //use this code to make textbox only accept numbers
+    public void TextFieldKeyType(KeyEvent event)
+    { //use this code to make textbox only accept numbers
      String  c = event.getCharacter();
         char[] s= c.toCharArray();
 
-        if(!Character.isDigit(s[0])){
+        if(!Character.isDigit(s[0]))
+        {
           event.consume();
         }
     }

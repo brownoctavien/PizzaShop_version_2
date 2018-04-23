@@ -10,12 +10,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SignupController {
+public class SignupController
+{
     Connection connection;
 
-    public SignupController(){
+    public SignupController()
+    {
         connection = SqliteConnection.Connector();
-        if(connection == null) {
+        if(connection == null)
+        {
             System.out.println("Connection not successful");
             System.exit(1);
         }
@@ -27,46 +30,56 @@ public class SignupController {
     @FXML
     private Label status_lbl;
 
-    public void AddNewUser(ActionEvent event) throws SQLException {
+    public void AddNewUser(ActionEvent event) throws SQLException
+    {
 
         String user= name_txt.getText();
         String pass= password_txt.getText();
 
-        if(user.isEmpty()){
+        if(user.isEmpty())
+        {
             status_lbl.setText("Values are empty");
         }
-        else {
+        else
+        {
             //add to database
             PreparedStatement preparedStatement = null;
             String query = "INSERT INTO User (Username, Password) VALUES (?, ?)";
-            try {
+            try
+            {
                 System.out.println("Adding data to database");
 
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, user);
                 preparedStatement.setString(2, pass);
 
-            } catch (SQLException e) {
+            } catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
             }
 
             //go back to login
             Main main= new Main();
-            try {
+            try
+            {
                 ((Node)event.getSource()).getScene().getWindow().hide(); //hide current window
 
                 main.createWindow("LoginMain_1.fxml");
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }
-
     }
 
-    public void cancel(ActionEvent event) throws Exception {
+    public void cancel(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide(); //hide current window
 
         //open login  window

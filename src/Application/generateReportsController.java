@@ -112,7 +112,8 @@ public class generateReportsController implements Initializable
 
     }
 
-    public static void getCount(String TypeID){
+    public static void getCount(String TypeID)
+    {
         String Type = TypeID.substring(0,1);
         System.out.println("Type: "+ Type);
 

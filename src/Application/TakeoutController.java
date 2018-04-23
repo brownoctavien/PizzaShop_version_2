@@ -12,7 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class TakeoutController {
+public class TakeoutController
+{
 
 
     @FXML
@@ -21,16 +22,19 @@ public class TakeoutController {
     private TextField phoneNumb_txt;// only accept number
     Connection connection;
 
-    public TakeoutController(){
+    public TakeoutController()
+    {
         connection = SqliteConnection.Connector();
-        if(connection == null) {
+        if(connection == null)
+        {
             System.out.println("Connection not successful");
             System.exit(1);
         }
     }
 
 
-    public void next(ActionEvent event) throws Exception {
+    public void next(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         //assign payment type to database: orderinfo: Payment type
@@ -62,7 +66,8 @@ public class TakeoutController {
         main.createWindow("Payment_3.fxml");
     }
 
-    public void back(ActionEvent event) throws Exception {
+    public void back(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();
@@ -71,35 +76,38 @@ public class TakeoutController {
 
 
 
-    public void TextFieldKeyType(KeyEvent event){
+    public void TextFieldKeyType(KeyEvent event)
+    {
         String  c = event.getCharacter();
         char[] s= c.toCharArray();
 
-        if(!Character.isDigit(s[0])){
+        if(!Character.isDigit(s[0]))
+        {
             event.consume();
         }
     }
 
-    public void TextFieldPhoneType(KeyEvent event){
+    public void TextFieldPhoneType(KeyEvent event)
+    {
         String  c = event.getCharacter();
         char[] s= c.toCharArray();
 
-        int count =0;
+        int count = 0;
         String phone = "";
 
-        if(!Character.isDigit(s[0])){
+        if(!Character.isDigit(s[0]))
+        {
             event.consume();
         }
 
-        if(phoneNumb_txt.getLength() == 3 || phoneNumb_txt.getLength() == 7 ){
+        if(phoneNumb_txt.getLength() == 3 || phoneNumb_txt.getLength() == 7 )
+        {
             phoneNumb_txt.appendText("-");
         }
 
-        if(phoneNumb_txt.getLength() >11){
+        if(phoneNumb_txt.getLength() >11)
+        {
             event.consume();
         }
-
-
-
     }
 }
