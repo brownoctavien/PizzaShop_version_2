@@ -19,19 +19,23 @@ public class Transaction extends Customer
     }
 
     // setters and getters
-    public static void setCustomerPaymentAmount(double customerPaymentAmount) {
+    public static void setCustomerPaymentAmount(double customerPaymentAmount)
+    {
         Transaction.customerPaymentAmount = customerPaymentAmount;
     }
 
-    public static void setCustomerPaymentType(String customerPaymentType) {
+    public static void setCustomerPaymentType(String customerPaymentType)
+    {
         Transaction.customerPaymentType = customerPaymentType;
     }
 
-    public static double getCustomerPaymentAmount() {
+    public static double getCustomerPaymentAmount()
+    {
         return customerPaymentAmount;
     }
 
-    public String getCustomerPaymentType() {
+    public String getCustomerPaymentType()
+    {
         return customerPaymentType;
     }
 } // end of Transaction class
