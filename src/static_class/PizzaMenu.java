@@ -1,9 +1,14 @@
 package static_class;
+
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
 public class PizzaMenu {
 
     // creating variables
-    String topping;
-    String size;
+   static String topping;
+    static String size;
+    static String count= null;
+    static String MenuID= null;
 
 
     // default constructor
@@ -13,22 +18,34 @@ public class PizzaMenu {
     }
 
     // setters and getters
-    public void setTopping(String topping)
+    public static void setTopping(String topping)
     {
-        this.topping = topping;
+        PizzaMenu.topping = topping;
     }
 
-    public String getTopping()
+    public static String getTopping()
     {
         return topping;
     }
-
-    public void setSize(String size)
-    {
-        this.size = size;
+    public static String getMenuID(){
+        return MenuID;
+    }
+    public static void setMenuID(String menuID){
+        PizzaMenu.MenuID = menuID;
+    }
+    public static void setCount(String count){
+        PizzaMenu.count = count;
+    }
+    public static String getCount(){
+        return count;
     }
 
-    public String getSize()
+    public static void setSize(String size)
+    {
+        PizzaMenu.size = size;
+    }
+
+    public static String getSize()
     {
        return size;
     }

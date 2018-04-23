@@ -1,5 +1,6 @@
 package Application;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -7,10 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import static_class.Customer;
-import static_class.OrderInfo;
-import static_class.Transaction;
-import  static_class.Delivery;
+import static_class.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,42 +50,6 @@ public class AssignorderController {
     public void AddCustomer(ActionEvent event) throws SQLException {
         if (saleType_cbox.getValue() != null && pizzaSize_cbox.getValue() != null && topping_cbox.getValue() != null && !quantity_txt.getText().isEmpty() && !name_txt.getText().isEmpty() && orderCount<=1 ) {
             orderCount =1;
-            //assign name to customer
-            Customer.setName(name_txt.getText());
-            // make random orderId
-            OrderInfo.makeID();
-            String orderid = String.valueOf(OrderInfo.getID());
-            //make random customerId
-            Customer.makeID();
-            String customerid = String.valueOf(Customer.getID());
-
-            // assign  id to database: orderinfo: id, customerID; customer: customerID
-            // assign name to database: customer: name;
-            PreparedStatement preparedStatement = null;
-            PreparedStatement preparedStatement1 = null;
-            String query = "INSERT INTO OrderInfo (OrderID,CustomerID,PaymentAmount) VALUES (?,?,?) ";
-            String  query1 = "INSERT INTO Customer (CustomerID,Name) VALUES (?, ?) ";
-
-            try {
-                System.out.println("Adding data to database");
-
-                preparedStatement = connection.prepareStatement(query);
-                preparedStatement1 = connection.prepareStatement(query1);
-                preparedStatement.setString(1, orderid);
-                preparedStatement.setString(2, customerid);
-                preparedStatement.setString(3,"0");
-                preparedStatement1.setString(1,customerid);
-                preparedStatement1.setString(2, name_txt.getText());
-
-            } catch (SQLException e) {
-                System.out.println("e");
-            } finally {
-                preparedStatement.execute();
-                preparedStatement1.execute();
-                preparedStatement.close();
-                preparedStatement1.close();
-
-            }
 
             // look in database and get pizza size/pizza topping price and assign that to a value
             PreparedStatement preparedStatement2 =null;
@@ -99,7 +61,10 @@ public class AssignorderController {
                 preparedStatement2.setString(2,pizzaSize_cbox.getValue().toString());
                 resultSet = preparedStatement2.executeQuery();
 
+                //get price from database and MenuID
                 price =resultSet.getString("Price");
+                PizzaMenu.setMenuID(resultSet.getString("MenuID"));
+
 
                 //add price by quantity
                 int q=  Integer.valueOf(quantity_txt.getText());
@@ -117,22 +82,51 @@ public class AssignorderController {
             }
 
 
+            //assign name to customer
+            Customer.setName(name_txt.getText());
+            // make random orderId
+            OrderInfo.makeID();
+            System.out.println("Order1: "+ OrderInfo.getID());
+            String orderid = String.valueOf(OrderInfo.getID());
+            //make random customerId
+            Customer.makeID();
+            String customerid = String.valueOf(Customer.getID());
+
             // determine saletype and store id accordingly to type in either datdabase: inhouse/takeout/delievery
+            String orderType = null;
             if(saleType_cbox.getValue().equals("Delievery")){
-                //make random delieveryID
-                Delivery delivery = new Delivery();
-                delivery.makeTypeID();
-                String delieveryid = String.valueOf(delivery.getTypeID());
+                //make  delieveryID
+                Delivery.makeID();
+
+                String delieveryid = String.valueOf(Delivery.getID());
                 System.out.print("delivery ID: "+ delieveryid);
-                //assign that to database
+                orderType = delieveryid;
             }
-            else if(saleType_cbox.getValue().equals("Take Out")){}
-            else if(saleType_cbox.getValue().equals("In House")){}
+            else if(saleType_cbox.getValue().equals("Take Out")){
+                //make Takeoutid
+                TakeOut.makeID();
+                String takeoutid = String.valueOf(TakeOut.getID());
+                System.out.println("take out: "+ takeoutid);
+                orderType = takeoutid;
+            }
+            else if(saleType_cbox.getValue().equals("In House")){
+                //make inhouseid
+                InHouse.makeID();
+                String inhouse = String.valueOf(InHouse.getID());
+                System.out.println("in house: "+ inhouse);
+                orderType = inhouse;
+            }
+
+            // assign  id to database: orderinfo: id, customerID; customer: customerID
+            // assign name to database: customer: name;
+            DB_Insert.OrderInfo(orderid,orderType,customerid,PizzaMenu.getMenuID(),"0","None");
+            DB_Insert.Customer(customerid,Customer.getName(), "None","None");
+
 
             //pop up message: Customer is added
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Add Customer");
-            alert.setContentText("Customer name: "+ Customer.getName() + " with an id of: "+ Customer.getID()+ " and order id of: "+ OrderInfo.getID()+ " was added");
+            alert.setContentText("Customer name: "+ Customer.getName() + " with an id of "+ Customer.getID()+ " and an order ID of "+ OrderInfo.getID()+ " was added");
             alert.showAndWait();
 
         }
@@ -161,6 +155,11 @@ public class AssignorderController {
 
         if (saleType_cbox.getValue() != null && pizzaSize_cbox.getValue() != null && topping_cbox.getValue() != null && !quantity_txt.getText().isEmpty() && !name_txt.getText().isEmpty() ) {
             ((Node) event.getSource()).getScene().getWindow().hide();  //hide current window
+
+            //set pizzmenu
+            PizzaMenu.setSize(pizzaSize_cbox.getValue().toString());
+            PizzaMenu.setTopping(topping_cbox.getValue().toString());
+            PizzaMenu.setCount(quantity_txt.getText());
 
           if (saleType_cbox.getValue().equals("Delievery")) {
               main.createWindow("Delievery_2_2_1.fxml");

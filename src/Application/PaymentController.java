@@ -35,6 +35,10 @@ public class PaymentController implements Initializable{
 
     public PaymentController(){
         connection = SqliteConnection.Connector();
+        if(connection == null) {
+            System.out.println("Connection not successful");
+            System.exit(1);
+        }
 
     }
 
@@ -43,15 +47,21 @@ public class PaymentController implements Initializable{
 
         //assign payment type to database: orderinfo: Payment type
         if(paymentType_cbox.getValue() != null){
+            //assign payment type to OrderInfo
+            OrderInfo.setPaymentType(paymentType_cbox.getValue().toString());
+
             String orderid = String.valueOf( OrderInfo.getID());
             PreparedStatement preparedStatement = null;
-            String query = "UPDATE OrderInfo SET PaymentAmount =? and PaymentType =? WHERE OrderID=?";
+            String query = "UPDATE OrderInfo SET PaymentAmount = ?,"
+                    +   "PaymentType = ?"
+                    +   " WHERE  OrderID= ?";
 
             try{
-                System.out.println("Adding data to database Payment "+ orderid);
+                System.out.println("Adding data to database Payment ");
+                System.out.println("orderid: "+ orderid+ " and paymentAmount: "+ Transaction.getCustomerPaymentAmount() );
 
                 preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, "Fuckyou");
+                preparedStatement.setString(1, String.valueOf(Transaction.getCustomerPaymentAmount()));
                 preparedStatement.setString(2, paymentType_cbox.getValue().toString());
                 preparedStatement.setString(3, orderid);
             }catch (SQLException e) {
@@ -77,6 +87,8 @@ public class PaymentController implements Initializable{
             main.createWindow("Confirmation_4.fxml");
         }
 
+
+
     }
 
     public void back(ActionEvent event) throws Exception {
@@ -86,6 +98,7 @@ public class PaymentController implements Initializable{
         main.createWindow("AssignOrder_2_2.fxml");
 
     }
+
 
 
 }

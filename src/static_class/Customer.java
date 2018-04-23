@@ -2,22 +2,28 @@ package static_class;
 
 import java.util.Random;
 
-public class Customer extends OrderInfo
+public class Customer
 {
 
-    static String name = null;
-    static String address = null;
-   static int ID = 0 ;
-   static int phone = 0;
+    static private String name ;
+    static private String address;
+   static private int ID ;
+   static private int phone;
 
+   public Customer(){
+       name= null;
+       address= null;
+       ID = 0;
+       phone= 0;
+   }
 
     // method for making random customerID
+
     public static void makeID()
     {
         Random rand = new Random();
         int id = rand.nextInt(1001)+ 1; //random number 1-1000;
-        setID(id);
-    }
+        setID(id);    }
 
     // setter methods
     public static void setName(String name){
@@ -28,11 +34,12 @@ public class Customer extends OrderInfo
         Customer.address = address;
     }
 
+
     public static void setID(int ID) {
         Customer.ID = ID;
     }
 
-    public static void setPhone(int phone)
+    public  static void setPhone(int phone)
     {
         Customer.phone = phone;
     }
@@ -47,7 +54,10 @@ public class Customer extends OrderInfo
         return address;
     }
 
-
+    public static int getID()
+    {
+        return ID;
+    }
 
     public static int getPhone()
     {

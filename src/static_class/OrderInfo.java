@@ -1,46 +1,58 @@
 package static_class;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+
 import java.util.Random;
 
 public class OrderInfo
 {
     // creating variables
-   static private int  ID =0 ;
-   private static String typeID = null;
+   static protected String ID;
+   static protected String typeID;
+   static protected String paymentType;
 
-
+    OrderInfo(String ID, String typeID, String paymentType){
+        OrderInfo.ID = ID;
+        OrderInfo.typeID = typeID;
+        OrderInfo.paymentType= paymentType;
+    }
     public OrderInfo(){
-
+        ID = null;
+        typeID = null;
+        paymentType = null;
     }
 
-    public OrderInfo(int orderID, String typeID)
-    {
-        this.ID= orderID;
-        this.typeID = typeID;
-    }
 
     // method for random orderID numbers
-    public  static void makeID()
+    public static void makeID()
     {
         Random rand = new Random();
         int id = rand.nextInt(1001)+ 1; //random number 1-1000;
-        setOrderID(id);
+        setID(String.valueOf(id));
     }
 
 
     // getter and setter methods
-    public static void setOrderID(int orderID) {
-        OrderInfo.ID = orderID;
+    private  static void setID(String ID) {
+        OrderInfo.ID = ID;
     }
-    public static void setTypeID(String typeID) {
+    private static void setTypeID(String typeID) {
         OrderInfo.typeID = typeID;
     }
-    public static int getID()
+    public static String getID()
     {
         return ID;
     }
-    public String getTypeID() {
+
+    private static String getTypeID() {
         return typeID;
+    }
+
+    public static void setPaymentType(String paymentType){
+        OrderInfo.paymentType = paymentType;
+    }
+    public static String getPaymentType(){
+        return paymentType;
     }
 
 

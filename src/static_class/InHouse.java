@@ -3,8 +3,7 @@ package static_class;
 public class InHouse extends OrderInfo
 {
 
-    // typeID
-    private  String typeID;
+    static String ID;
 
 
     // default constructor
@@ -13,10 +12,15 @@ public class InHouse extends OrderInfo
         typeID = "H";
     }
 
-    @Override
-    public String getTypeID() {
-        String id = typeID +getID();
-        return id;
+    public static String getID(){
+        return InHouse.ID;
+    }
+    public static void makeID() {
+        /*Random rand = new Random();
+        int id = rand.nextInt(1001)+ 1; //random number 1-1000;*/
+        typeID = "H";
+
+        InHouse.ID = InHouse.typeID + OrderInfo.ID;
     }
 
 } // end of InHouse class

@@ -3,9 +3,9 @@ public class TakeOut extends OrderInfo
 {
 
     // creating variables
-    private String typeID;
-    int boxAmount;
-    int phoneNumber;
+    static int boxAmount;
+    static int phoneNumber;
+    static String ID;
 
 
     // default constructor
@@ -17,12 +17,8 @@ public class TakeOut extends OrderInfo
     }
 
     //getter and setter
-    @Override
-    public String getTypeID() {
-        String id = typeID +getID();
-        return id;
-    }
-    public int getBoxAmount(){
+
+    public static int getBoxAmount(){
         return boxAmount;
     }
     public int getPhoneNumber(){
@@ -33,6 +29,16 @@ public class TakeOut extends OrderInfo
     }
     public  void setPhoneNumber(int phoneNumber){
         this.phoneNumber = phoneNumber;
+    }
+    public static String getID(){
+        return TakeOut.ID;
+    }
+    public static void makeID() {
+        /*Random rand = new Random();
+        int id = rand.nextInt(1001)+ 1; //random number 1-1000;*/
+        typeID = "T";
+
+        TakeOut.ID = TakeOut.typeID + OrderInfo.ID;
     }
 
 

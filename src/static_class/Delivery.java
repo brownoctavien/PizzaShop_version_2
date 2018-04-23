@@ -1,56 +1,65 @@
 package static_class;
 
 
+import java.util.Random;
+
 public class Delivery extends OrderInfo
 {
 
 
     // creating variables
-    private String typeID;
+    private static int boxAmount;
+    private static int  phoneNumber;
+    private static String ID;
 
-    private int boxAmount;
-    private int  phoneNumber;
 
 
 
     // default constructor
     public Delivery()
     {
+        // make orderType to delivery type
         typeID = "D";
+        ID= null;
     }
 
 
     // getter and setter methods
-    public void setBoxAmount(int boxAmount)
+    public static void setBoxAmount(int boxAmount)
     {
-        this.boxAmount = boxAmount;
+        Delivery.boxAmount = boxAmount;
     }
 
-    public int getBoxAmount()
+    public static int getBoxAmount()
     {
         return boxAmount;
     }
 
-    public void setPhoneNumber(int phoneNumber)
+    public static void setPhoneNumber(int phoneNumber)
     {
-        this.phoneNumber = phoneNumber;
+        Delivery.phoneNumber = phoneNumber;
     }
 
-    public int getPhoneNumber()
+    public static int getPhoneNumber()
 
     {
         return phoneNumber;
     }
 
-    @Override
-    public String getTypeID() {
-        String id = typeID +getID();
-        return id;
+
+
+    public static void makeID() {
+        /*Random rand = new Random();
+        int id = rand.nextInt(1001)+ 1; //random number 1-1000;*/
+        typeID = "D";
+
+       Delivery.ID = Delivery.typeID + OrderInfo.ID;
     }
+    public static void setID(){}
 
 
-    public void makeTypeID() {
-        super.makeID();
+    public static String getID(){
+        return Delivery.ID;
     }
 
 } // end of Delivery class

@@ -5,6 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import static_class.OrderInfo;
+import static_class.Transaction;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class TakeoutController {
 
@@ -13,11 +19,44 @@ public class TakeoutController {
     private TextField numOfBox_txt; // only accept number
     @FXML
     private TextField phoneNumb_txt;// only accept number
+    Connection connection;
 
+    public TakeoutController(){
+        connection = SqliteConnection.Connector();
+        if(connection == null) {
+            System.out.println("Connection not successful");
+            System.exit(1);
+        }
+    }
 
 
     public void next(ActionEvent event) throws Exception {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
+
+        //assign payment type to database: orderinfo: Payment type
+    /*    if(numOfBox_txt.getText() != null && phoneNumb_txt.getText() != null){
+            //assign payment type to OrderInfo
+
+            String orderid = String.valueOf( OrderInfo.getID());
+            PreparedStatement preparedStatement = null;
+            String query = "";
+
+            try{
+                System.out.println("Adding data to database");
+
+                preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, );
+                preparedStatement.setString(2, );
+                preparedStatement.setString(3, );
+
+            }catch (SQLException e) {
+                System.out.println("e");
+            } finally {
+                preparedStatement.execute();
+                preparedStatement.close();
+            }
+
+        }*/
 
         Main main = new Main();
         main.createWindow("Payment_3.fxml");
@@ -46,17 +85,21 @@ public class TakeoutController {
         char[] s= c.toCharArray();
 
         int count =0;
-        String phone = null;
+        String phone = "";
 
         if(!Character.isDigit(s[0])){
             event.consume();
-            count++;
         }
-        else{
-            phone += c;
+
+        if(phoneNumb_txt.getLength() == 3 || phoneNumb_txt.getLength() == 7 ){
+            phoneNumb_txt.appendText("-");
+        }
+
+        if(phoneNumb_txt.getLength() >11){
+            event.consume();
         }
 
 
-        phoneNumb_txt.setText(phone);
+
     }
 }
