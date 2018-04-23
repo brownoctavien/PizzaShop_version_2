@@ -20,7 +20,7 @@ public class Delivery extends OrderInfo
     {
         // make orderType to delivery type
         typeID = "D";
-        ID= null;
+        ID = null;
     }
 
 
@@ -58,7 +58,8 @@ public class Delivery extends OrderInfo
     public static void setID(){}
 
 
-    public static String getID(){
+    public static String getID()
+    {
         return Delivery.ID;
     }
 

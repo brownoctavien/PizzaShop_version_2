@@ -9,15 +9,18 @@ import java.sql.SQLException;
 public class DB_Insert {
    static Connection connection;
 
-    private static void connection( ){
+    private static void connection( )
+    {
         connection = SqliteConnection.Connector();
-        if(connection == null) {
+        if(connection == null)
+        {
             System.out.println("Connection not successful");
             System.exit(1);
         }
     }
 
-        public static void OrderInfo (String OrderID, String TypeID, String CustomerID, String MenuID, String PaymentAmount, String PaymentType) throws SQLException {
+        public static void OrderInfo (String OrderID, String TypeID, String CustomerID, String MenuID, String PaymentAmount, String PaymentType) throws SQLException
+        {
 
             System.out.println("insert into orderinfo database");
             connection();
@@ -27,7 +30,8 @@ public class DB_Insert {
                     " (OrderID,TypeID,CustomerID,MenuID,PaymentAmount,PaymentType) " +
                     "VALUES (?,?,?,?,?,?) ";
 
-            try {
+            try
+            {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, OrderID);
                 preparedStatement.setString(2, TypeID);
@@ -37,9 +41,11 @@ public class DB_Insert {
                 preparedStatement.setString(6,PaymentType);
 
 
-            } catch (SQLException e) {
+            } catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            } finally
+            {
                 preparedStatement.execute();
 
                 preparedStatement.close();
@@ -55,7 +61,8 @@ public class DB_Insert {
                     " (CustomerID,Name,Address,Phone) " +
                     "VALUES (?,?,?,?) ";
 
-            try {
+            try
+            {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, String.valueOf(CustomerID));
                 preparedStatement.setString(2, Name);
@@ -63,9 +70,11 @@ public class DB_Insert {
                 preparedStatement.setString(4, Phone);
 
 
-            } catch (SQLException e) {
+            } catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            } finally
+            {
                 preparedStatement.execute();
 
                 preparedStatement.close();

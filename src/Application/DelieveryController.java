@@ -5,7 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 
-public class DelieveryController {
+public class DelieveryController
+{
 
     @FXML
     private TextField address1_txt;
@@ -20,14 +21,16 @@ public class DelieveryController {
 
 
 
-    public void next(ActionEvent event) throws Exception {
+    public void next(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();
         main.createWindow("Payment_3.fxml");
     }
 
-    public void back(ActionEvent event) throws Exception {
+    public void back(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();

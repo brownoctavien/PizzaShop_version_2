@@ -17,17 +17,20 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class generateReportsController implements Initializable{
+public class generateReportsController implements Initializable
+{
 
-   static private int InhouseCount=0;
-    static private int DelieveryCount=0;
-    static private int TakeoutCount=0;
+   static private int InhouseCount = 0;
+    static private int DelieveryCount = 0;
+    static private int TakeoutCount = 0;
 
     Connection connection;
 
-    public generateReportsController(){
+    public generateReportsController()
+    {
         connection = SqliteConnection.Connector();
-        if(connection == null) {
+        if(connection == null)
+        {
             System.out.println("Connection not successful");
             System.exit(1);
         }
@@ -41,17 +44,19 @@ public class generateReportsController implements Initializable{
     @FXML
     private PieChart pieChart;
 
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)
+    {
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                 new PieChart.Data("In House", 0),
                 new PieChart.Data("Take Out",0),
-                new PieChart.Data("Delievery", 0));
+                new PieChart.Data("Delivery", 0));
 
         pieChart.setData(pieChartData);
 
     }
 
-    public void back(ActionEvent event) throws Exception {
+    public void back(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();
@@ -67,34 +72,39 @@ public class generateReportsController implements Initializable{
 
 
 
-    public void generatePie() throws SQLException {
-        PreparedStatement preparedStatement =null;
-        ResultSet resultSet =null;
+    public void generatePie() throws SQLException
+    {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
         String query = "select * from OrderInfo ";
-        try {
+        try
+        {
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next())
+            {
 
                 System.out.println("Order: "+ resultSet.getString("TypeID"));
                 getCount(resultSet.getString("TypeID"));
             }
-            System.out.println("Deilver: "+ getDelieveryCount());
-            System.out.println("InHouse: "+ getInHouseCount());
-            System.out.println("take out: "+ getTakeoutCost());
+            System.out.println("Delivery: " + getDelieveryCount());
+            System.out.println("In House: " + getInHouseCount());
+            System.out.println("Take Out: " + getTakeoutCost());
 
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                     new PieChart.Data("In House", getInHouseCount()),
                     new PieChart.Data("Take Out",getTakeoutCost()),
-                    new PieChart.Data("Delievery", getDelieveryCount()));
+                    new PieChart.Data("Delivery", getDelieveryCount()));
             pieChart.setData(pieChartData);
 
 
 
-        }catch (SQLException e) {
+        }catch (SQLException e)
+        {
             System.out.println(e);
-        }finally {
+        }finally
+        {
             preparedStatement.execute();
             preparedStatement.close();
             resultSet.close();
@@ -106,34 +116,43 @@ public class generateReportsController implements Initializable{
         String Type = TypeID.substring(0,1);
         System.out.println("Type: "+ Type);
 
-        if(Type.equals("D")){
+        if (Type.equals("D"))
+        {
             DelieveryCount++;
         }
-        else if(Type.equals("H")){
+        else if(Type.equals("H"))
+        {
             InhouseCount++;
         }
-        else if(Type.equals("T")){
+        else if(Type.equals("T"))
+        {
             TakeoutCount++;
         }
 
     }
-    public static int getInHouseCount(){
+    public static int getInHouseCount()
+    {
         return InhouseCount;
     }
-    public static int getDelieveryCount(){
+    public static int getDelieveryCount()
+    {
         return DelieveryCount;
     }
-    public static int getTakeoutCost(){
+    public static int getTakeoutCost()
+    {
         return TakeoutCount;
     }
 
-    public static void setInHouseCount(int Count){
+    public static void setInHouseCount(int Count)
+    {
         InhouseCount = Count;
     }
-    public static void settDelieveryCount(int Count){
+    public static void settDelieveryCount(int Count)
+    {
         DelieveryCount = Count;
     }
-    public void setTakeoutCount(int Count){
+    public void setTakeoutCount(int Count)
+    {
         TakeoutCount = Count;
     }
 
