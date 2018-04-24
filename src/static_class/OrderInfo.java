@@ -15,7 +15,7 @@ public class OrderInfo
     {
         OrderInfo.ID = ID;
         OrderInfo.typeID = typeID;
-        OrderInfo.paymentType= paymentType;
+        OrderInfo.paymentType = paymentType;
     }
     public OrderInfo()
     {

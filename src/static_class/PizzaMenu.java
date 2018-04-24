@@ -8,8 +8,8 @@ public class PizzaMenu
     // creating variables
    static String topping;
     static String size;
-    static String count= null;
-    static String MenuID= null;
+    static String count = null;
+    static String MenuID = null;
 
 
     // default constructor

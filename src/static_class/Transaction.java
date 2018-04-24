@@ -4,8 +4,8 @@ public class Transaction extends Customer
 {
 
     // creating variables
-   static private double customerPaymentAmount =0;
-   static private String customerPaymentType =null;
+   static private double customerPaymentAmount = 0;
+   static private String customerPaymentType = null;
 
     // default constructor
     public Transaction()
