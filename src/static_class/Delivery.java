@@ -48,9 +48,8 @@ public class Delivery extends OrderInfo
 
 
 
-    public static void makeID() {
-        /*Random rand = new Random();
-        int id = rand.nextInt(1001)+ 1; //random number 1-1000;*/
+    public static void makeID()
+    {
         typeID = "D";
 
        Delivery.ID = Delivery.typeID + OrderInfo.ID;
@@ -58,7 +57,8 @@ public class Delivery extends OrderInfo
     public static void setID(){}
 
 
-    public static String getID(){
+    public static String getID()
+    {
         return Delivery.ID;
     }
 

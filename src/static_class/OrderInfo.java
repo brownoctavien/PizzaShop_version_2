@@ -11,12 +11,14 @@ public class OrderInfo
    static protected String typeID;
    static protected String paymentType;
 
-    OrderInfo(String ID, String typeID, String paymentType){
+    OrderInfo(String ID, String typeID, String paymentType)
+    {
         OrderInfo.ID = ID;
         OrderInfo.typeID = typeID;
-        OrderInfo.paymentType= paymentType;
+        OrderInfo.paymentType = paymentType;
     }
-    public OrderInfo(){
+    public OrderInfo()
+    {
         ID = null;
         typeID = null;
         paymentType = null;
@@ -33,10 +35,12 @@ public class OrderInfo
 
 
     // getter and setter methods
-    private  static void setID(String ID) {
+    private  static void setID(String ID)
+    {
         OrderInfo.ID = ID;
     }
-    private static void setTypeID(String typeID) {
+    private static void setTypeID(String typeID)
+    {
         OrderInfo.typeID = typeID;
     }
     public static String getID()
@@ -44,14 +48,17 @@ public class OrderInfo
         return ID;
     }
 
-    private static String getTypeID() {
+    private static String getTypeID()
+    {
         return typeID;
     }
 
-    public static void setPaymentType(String paymentType){
+    public static void setPaymentType(String paymentType)
+    {
         OrderInfo.paymentType = paymentType;
     }
-    public static String getPaymentType(){
+    public static String getPaymentType()
+    {
         return paymentType;
     }
 

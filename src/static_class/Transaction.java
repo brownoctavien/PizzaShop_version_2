@@ -4,8 +4,8 @@ public class Transaction extends Customer
 {
 
     // creating variables
-   static private double customerPaymentAmount =0;
-   static private String customerPaymentType =null;
+   static private double customerPaymentAmount = 0;
+   static private String customerPaymentType = null;
 
     // default constructor
     public Transaction()
@@ -14,24 +14,29 @@ public class Transaction extends Customer
     }
 
     // printing results method
-    public void printReceipt() {
+    public void printReceipt()
+    {
         // finished later
     }
 
     // setters and getters
-    public static void setCustomerPaymentAmount(double customerPaymentAmount) {
+    public static void setCustomerPaymentAmount(double customerPaymentAmount)
+    {
         Transaction.customerPaymentAmount = customerPaymentAmount;
     }
 
-    public static void setCustomerPaymentType(String customerPaymentType) {
+    public static void setCustomerPaymentType(String customerPaymentType)
+    {
         Transaction.customerPaymentType = customerPaymentType;
     }
 
-    public static double getCustomerPaymentAmount() {
+    public static double getCustomerPaymentAmount()
+    {
         return customerPaymentAmount;
     }
 
-    public String getCustomerPaymentType() {
+    public String getCustomerPaymentType()
+    {
         return customerPaymentType;
     }
 } // end of Transaction class

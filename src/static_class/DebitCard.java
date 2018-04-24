@@ -1,6 +1,7 @@
 package static_class;
 
-public class DebitCard {
+public class DebitCard
+{
 
     // create variables
     String name;

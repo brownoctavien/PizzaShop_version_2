@@ -29,9 +29,11 @@ public class DelieveryController {
 
     Connection connection;
 
-    public DelieveryController(){
+    public DelieveryController()
+    {
         connection = SqliteConnection.Connector();
-        if(connection == null) {
+        if(connection == null)
+        {
             System.out.println("Connection not successful");
             System.exit(1);
         }
@@ -39,9 +41,10 @@ public class DelieveryController {
 
 
 
-    public void next(ActionEvent event) throws Exception {
+    public void next(ActionEvent event) throws Exception
+    {
 
-        if(!address1_txt.getText().isEmpty() && !city_txt.getText().isEmpty()&& ! state_txt.getText().isEmpty()&&
+        if (!address1_txt.getText().isEmpty() && !city_txt.getText().isEmpty()&& ! state_txt.getText().isEmpty()&&
                 !zipCode_txt.getText().isEmpty() && !phoneNum_txt.getText().isEmpty()){
 
             //add to delievery database
@@ -53,16 +56,21 @@ public class DelieveryController {
                     +   "Phone = ?"
                     +   " WHERE  CustomerID= ?";
 
-            try{
+            try
+            {
                 System.out.println("Updating data to database Customer ");
 
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, address1_txt.getText());
                 preparedStatement.setString(2,phoneNum_txt.getText());
                 preparedStatement.setString(3, String.valueOf(Customer.getID()));
-            }catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
             }
@@ -73,7 +81,8 @@ public class DelieveryController {
             Main main = new Main();
             main.createWindow("Payment_3.fxml");
         }
-        else {
+        else
+        {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter values");
             alert.showAndWait();
@@ -81,7 +90,8 @@ public class DelieveryController {
 
     }
 
-    public void back(ActionEvent event) throws Exception {
+    public void back(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();

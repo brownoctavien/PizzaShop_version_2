@@ -18,28 +18,31 @@ public class TakeOut extends OrderInfo
 
     //getter and setter
 
-    public static int getBoxAmount(){
+    public static int getBoxAmount()
+    {
         return boxAmount;
     }
-    public int getPhoneNumber(){
+    public int getPhoneNumber()
+    {
         return phoneNumber;
     }
-    public void setBoxAmount(int amount){
+    public void setBoxAmount(int amount)
+    {
         this.boxAmount = amount;
     }
-    public  void setPhoneNumber(int phoneNumber){
+    public  void setPhoneNumber(int phoneNumber)
+    {
         this.phoneNumber = phoneNumber;
     }
-    public static String getID(){
+    public static String getID()
+    {
         return TakeOut.ID;
     }
-    public static void makeID() {
-        /*Random rand = new Random();
-        int id = rand.nextInt(1001)+ 1; //random number 1-1000;*/
+    public static void makeID()
+    {
         typeID = "T";
 
         TakeOut.ID = TakeOut.typeID + OrderInfo.ID;
     }
-
-
+    
 } // end TakeOut class

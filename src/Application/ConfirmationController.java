@@ -27,7 +27,8 @@ public class ConfirmationController implements Initializable{
     private TextField paymentType_txt;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)
+    {
         name_txt.setText(Customer.getName());
         amountPaid_txt.setText(String.valueOf("$"+ Transaction.getCustomerPaymentAmount()));
         pizzaOrder_txt.setText(PizzaMenu.getSize()+ " "+ PizzaMenu.getTopping() + " Pizza x" + PizzaMenu.getCount());
@@ -35,7 +36,8 @@ public class ConfirmationController implements Initializable{
     }
 
 
-    public void gotoMain(ActionEvent event) throws Exception {
+    public void gotoMain(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();

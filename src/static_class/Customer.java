@@ -26,16 +26,19 @@ public class Customer
         setID(id);    }
 
     // setter methods
-    public static void setName(String name){
+    public static void setName(String name)
+    {
         Customer.name = name;
     }
 
-    public static void setAddress(String address) {
+    public static void setAddress(String address)
+    {
         Customer.address = address;
     }
 
 
-    public static void setID(int ID) {
+    public static void setID(int ID)
+    {
         Customer.ID = ID;
     }
 

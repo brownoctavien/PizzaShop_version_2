@@ -11,18 +11,22 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+public class LoginController implements Initializable
+{
 
     public LoginModel loginModel= new LoginModel();
 
     @FXML
     private Label isConnected;
     @Override
-    public void initialize(URL location, ResourceBundle resources){
-        if(loginModel.isDbConnected()){
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        if(loginModel.isDbConnected())
+        {
             isConnected.setText("Connected");
         }
-        else {
+        else
+        {
             isConnected.setText("Not Connected");
         }
     }
@@ -37,21 +41,25 @@ public class LoginController implements Initializable {
     @FXML
 
 
-    public void Login(ActionEvent event) throws Exception{
-        if(loginModel.isLogin(name_txt.getText(),password_txt.getText() )){
+    public void Login(ActionEvent event) throws Exception
+    {
+        if(loginModel.isLogin(name_txt.getText(),password_txt.getText() ))
+        {
             ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
             //open MainMenu Window
             Main main = new Main();
             main.createWindow("Main_2.fxml");
         }
-        else {
+        else
+        {
 
             //login fail
             status_lbl.setText("Username or Password is incorrect");
         }
     }
 
-    public void Signup(ActionEvent event)throws Exception{
+    public void Signup(ActionEvent event)throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide(); //hide current window
         //open Signup Window
         Main main = new Main();

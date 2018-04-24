@@ -8,34 +8,4 @@ public class GenerateReports
     {
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 } // end of GenerateReports class

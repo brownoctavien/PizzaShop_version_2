@@ -14,7 +14,8 @@ public class Main extends Application {
     }
 
 
-    public void createWindow(String name ) throws Exception {
+    public void createWindow(String name ) throws Exception
+    {
         Stage primaryStage = new Stage();
         FXMLLoader loader= new FXMLLoader();
         Pane root = loader.load(getClass().getResource(name).openStream());
@@ -32,7 +33,8 @@ public class Main extends Application {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         launch(args);
     }
 }
