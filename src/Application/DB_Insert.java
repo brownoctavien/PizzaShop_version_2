@@ -6,18 +6,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DB_Insert {
+public class DB_Insert
+{
    static Connection connection;
 
-    private static void connection( ){
+    private static void connection( )
+    {
         connection = SqliteConnection.Connector();
-        if(connection == null) {
+        if(connection == null)
+        {
             System.out.println("Connection not successful");
             System.exit(1);
         }
     }
 
-        public static void Takeout(String OrderID, String TypeID, String Box) throws SQLException {
+        public static void Takeout(String OrderID, String TypeID, String Box) throws SQLException
+        {
             System.out.println("insert into Takeout database");
             connection();
 
@@ -26,21 +30,27 @@ public class DB_Insert {
                     " (OrderID,TypeID,Box) " +
                     "VALUES (?,?,?) ";
 
-            try {
+            try
+            {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, String.valueOf(OrderID));
                 preparedStatement.setString(2, TypeID);
                 preparedStatement.setString(3, Box);
 
 
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
             }
         }
-        public static void Delievery(String OrderID, String TypeID, String Address, String City, String State, String ZipCode) throws SQLException {
+        public static void Delievery(String OrderID, String TypeID, String Address, String City, String State, String ZipCode) throws SQLException
+        {
             System.out.println("insert into Delivery database");
             connection();
 
@@ -49,7 +59,8 @@ public class DB_Insert {
                     " (OrderID,TypeID,Address,City,State,ZipCode) " +
                     "VALUES (?,?,?,?,?,?) ";
 
-            try {
+            try
+            {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, String.valueOf(OrderID));
                 preparedStatement.setString(2, TypeID);
@@ -59,14 +70,19 @@ public class DB_Insert {
                 preparedStatement.setString(6,ZipCode);
 
 
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
             }
         }
-        public static void Inhouse(String OrderID, String TypeID) throws SQLException {
+        public static void Inhouse(String OrderID, String TypeID) throws SQLException
+        {
             System.out.println("insert into Inhouse database");
             connection();
 
@@ -75,19 +91,25 @@ public class DB_Insert {
                     " (OrderID,TypeID) " +
                     "VALUES (?,?) ";
 
-            try {
+            try
+            {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, String.valueOf(OrderID));
                 preparedStatement.setString(2, TypeID);
 
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
             }
         }
-        public static  void DebitCard(String CardNumber, String NameOnCard, String ExpirationDate,String PIN) throws SQLException {
+        public static void DebitCard(String CardNumber, String NameOnCard, String ExpirationDate,String PIN) throws SQLException
+        {
             System.out.println("insert into DebitCard database");
             connection();
 
@@ -96,7 +118,8 @@ public class DB_Insert {
                     " (CardNumber,NameOnCard,ExpirationDate,PIN Number) " +
                     "VALUES (?,?,?,?) ";
 
-            try {
+            try
+            {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, String.valueOf(CardNumber));
                 preparedStatement.setString(2, NameOnCard);
@@ -104,9 +127,13 @@ public class DB_Insert {
                 preparedStatement.setString(4, String.valueOf(PIN));
 
 
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
             }
@@ -120,7 +147,8 @@ public class DB_Insert {
                     " (CardNumber,CardType,ExpirationDate,NameOnCard) " +
                     "VALUES (?,?,?,?) ";
 
-            try {
+            try
+            {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, String.valueOf(CardNumber));
                 preparedStatement.setString(2, CardType);
@@ -128,14 +156,19 @@ public class DB_Insert {
                 preparedStatement.setString(4, NameOnCard);
 
 
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
             }
         }
-        public static void OrderInfo (String OrderID, String TypeID, String CustomerID, String MenuID, String PaymentAmount, String PaymentType) throws SQLException {
+        public static void OrderInfo (String OrderID, String TypeID, String CustomerID, String MenuID, String PaymentAmount, String PaymentType) throws SQLException
+        {
 
             System.out.println("insert into orderinfo database");
             connection();
@@ -145,7 +178,8 @@ public class DB_Insert {
                     " (OrderID,TypeID,CustomerID,MenuID,PaymentAmount,PaymentType) " +
                     "VALUES (?,?,?,?,?,?) ";
 
-            try {
+            try
+            {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, OrderID);
                 preparedStatement.setString(2, TypeID);
@@ -155,14 +189,19 @@ public class DB_Insert {
                 preparedStatement.setString(6,PaymentType);
 
 
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
             }
         }
-        public static void Customer (String CustomerID, String Name, String Address, String Phone) throws SQLException {
+        public static void Customer (String CustomerID, String Name, String Address, String Phone) throws SQLException
+        {
             System.out.println("insert into customer database");
             connection();
 
@@ -171,7 +210,8 @@ public class DB_Insert {
                     " (CustomerID,Name,Address,Phone) " +
                     "VALUES (?,?,?,?) ";
 
-            try {
+            try
+            {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, String.valueOf(CustomerID));
                 preparedStatement.setString(2, Name);
@@ -179,9 +219,13 @@ public class DB_Insert {
                 preparedStatement.setString(4, Phone);
 
 
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
 

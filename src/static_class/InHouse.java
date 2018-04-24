@@ -12,10 +12,12 @@ public class InHouse extends OrderInfo
         typeID = "H";
     }
 
-    public static String getID(){
+    public static String getID()
+    {
         return InHouse.ID;
     }
-    public static void makeID() {
+    public static void makeID()
+    {
         /*Random rand = new Random();
         int id = rand.nextInt(1001)+ 1; //random number 1-1000;*/
         typeID = "H";

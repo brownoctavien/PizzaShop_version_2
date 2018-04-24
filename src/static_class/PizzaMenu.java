@@ -2,7 +2,8 @@ package static_class;
 
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
-public class PizzaMenu {
+public class PizzaMenu
+{
 
     // creating variables
    static String topping;
@@ -27,16 +28,20 @@ public class PizzaMenu {
     {
         return topping;
     }
-    public static String getMenuID(){
+    public static String getMenuID()
+    {
         return MenuID;
     }
-    public static void setMenuID(String menuID){
+    public static void setMenuID(String menuID)
+    {
         PizzaMenu.MenuID = menuID;
     }
-    public static void setCount(String count){
+    public static void setCount(String count)
+    {
         PizzaMenu.count = count;
     }
-    public static String getCount(){
+    public static String getCount()
+    {
         return count;
     }
 

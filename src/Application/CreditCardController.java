@@ -7,7 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class CreditCardController {
+public class CreditCardController
+{
 
     @FXML
     private TextField name_txt;
@@ -20,8 +21,12 @@ public class CreditCardController {
 
 
 
-    public void next(ActionEvent event) throws Exception {
-        if (!name_txt.getText().isEmpty() && !number_txt.getText().isEmpty() && !expiration_txt.getText().isEmpty() && type_cbox.getValue() != null) {
+    public void next(ActionEvent event) throws Exception
+    {
+        if (!name_txt.getText().isEmpty() && !number_txt.getText().isEmpty()
+                && !expiration_txt.getText().isEmpty()
+                && type_cbox.getValue() != null)
+        {
 
             //add to database
             DB_Insert.CreditCard(number_txt.getText(),type_cbox.getValue().toString(),expiration_txt.getText(),name_txt.getText());
@@ -31,7 +36,8 @@ public class CreditCardController {
             Main main = new Main();
             main.createWindow("Confirmation_4.fxml");
         }
-        else {
+        else
+        {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter values");
             alert.showAndWait();

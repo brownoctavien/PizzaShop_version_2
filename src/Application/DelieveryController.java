@@ -8,7 +8,8 @@ import javafx.scene.control.TextField;
 import static_class.Delivery;
 import static_class.OrderInfo;
 
-public class DelieveryController {
+public class DelieveryController
+{
 
     @FXML
     private TextField address1_txt;
@@ -23,19 +24,22 @@ public class DelieveryController {
 
 
 
-    public void next(ActionEvent event) throws Exception {
+    public void next(ActionEvent event) throws Exception
+    {
 
-        if(!address1_txt.getText().isEmpty() && !city_txt.getText().isEmpty()&& ! state_txt.getText().isEmpty()&&
+        if(!address1_txt.getText().isEmpty() && !city_txt.getText().isEmpty()&& ! state_txt.getText().isEmpty() &&
                 !zipCode_txt.getText().isEmpty() && !phoneNum_txt.getText().isEmpty()){
 
-            DB_Insert.Delievery(OrderInfo.getID(), Delivery.getID(),address1_txt.getText(),city_txt.getText(),state_txt.getText(),zipCode_txt.getText());
+            DB_Insert.Delievery(OrderInfo.getID(), Delivery.getID(),address1_txt.getText(),city_txt.getText(),
+                    state_txt.getText(),zipCode_txt.getText());
 
             ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
             Main main = new Main();
             main.createWindow("Payment_3.fxml");
         }
-        else {
+        else
+        {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter values");
             alert.showAndWait();
@@ -43,7 +47,8 @@ public class DelieveryController {
 
     }
 
-    public void back(ActionEvent event) throws Exception {
+    public void back(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();

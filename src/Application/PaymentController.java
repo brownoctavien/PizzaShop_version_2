@@ -17,7 +17,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class PaymentController implements Initializable{
+public class PaymentController implements Initializable
+{
 
     @FXML
     private TextField amountPaid_txt;
@@ -28,25 +29,30 @@ public class PaymentController implements Initializable{
     Connection connection;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)
+    {
             amountPaid_txt.setText(String.valueOf("$" +Transaction.getCustomerPaymentAmount())); //get amount from Transaction class
             paymentType_cbox.setValue("Cash"); //defult cash payment type
     }
 
-    public PaymentController(){
+    public PaymentController()
+    {
         connection = SqliteConnection.Connector();
-        if(connection == null) {
+        if(connection == null)
+        {
             System.out.println("Connection not successful");
             System.exit(1);
         }
 
     }
 
-    public void next(ActionEvent event) throws Exception  {
+    public void next(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         //assign payment type to database: orderinfo: Payment type
-        if(paymentType_cbox.getValue() != null){
+        if (paymentType_cbox.getValue() != null)
+        {
             //assign payment type to OrderInfo
             OrderInfo.setPaymentType(paymentType_cbox.getValue().toString());
 
@@ -56,7 +62,8 @@ public class PaymentController implements Initializable{
                     +   "PaymentType = ?"
                     +   " WHERE  OrderID= ?";
 
-            try{
+            try
+            {
                 System.out.println("Adding data to database Payment ");
                 System.out.println("orderid: "+ orderid+ " and paymentAmount: "+ Transaction.getCustomerPaymentAmount() );
 
@@ -64,9 +71,13 @@ public class PaymentController implements Initializable{
                 preparedStatement.setString(1, String.valueOf(Transaction.getCustomerPaymentAmount()));
                 preparedStatement.setString(2, paymentType_cbox.getValue().toString());
                 preparedStatement.setString(3, orderid);
-            }catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 System.out.println("e");
-            } finally {
+            }
+            finally
+            {
                 preparedStatement.execute();
                 preparedStatement.close();
             }
@@ -76,14 +87,16 @@ public class PaymentController implements Initializable{
 
         Main main = new Main();
 
-        if(paymentType_cbox.getValue().equals("Debit Card")){
+        if (paymentType_cbox.getValue().equals("Debit Card"))
+        {
             main.createWindow("DebitCard.fxml");
         }
-        else if(paymentType_cbox.getValue().equals("Credit Card")){
+        else if(paymentType_cbox.getValue().equals("Credit Card"))
+        {
             main.createWindow("CreditCard.fxml");
         }
-        else{
-
+        else
+        {
             main.createWindow("Confirmation_4.fxml");
         }
 
@@ -91,7 +104,8 @@ public class PaymentController implements Initializable{
 
     }
 
-    public void back(ActionEvent event) throws Exception {
+    public void back(ActionEvent event) throws Exception
+    {
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
 
         Main main = new Main();

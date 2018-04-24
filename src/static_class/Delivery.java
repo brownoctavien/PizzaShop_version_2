@@ -13,8 +13,6 @@ public class Delivery extends OrderInfo
     private static String ID;
 
 
-
-
     // default constructor
     public Delivery()
     {
@@ -41,24 +39,29 @@ public class Delivery extends OrderInfo
     }
 
     public static int getPhoneNumber()
-
     {
         return phoneNumber;
     }
 
 
 
-    public static void makeID() {
+    public static void makeID()
+    {
         /*Random rand = new Random();
         int id = rand.nextInt(1001)+ 1; //random number 1-1000;*/
         typeID = "D";
 
        Delivery.ID = Delivery.typeID + OrderInfo.ID;
     }
-    public static void setID(){}
+
+    public static void setID()
+    {
+
+    }
 
 
-    public static String getID(){
+    public static String getID()
+    {
         return Delivery.ID;
     }
 
