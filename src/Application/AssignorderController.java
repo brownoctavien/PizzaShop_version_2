@@ -115,6 +115,7 @@ public class AssignorderController {
                 String inhouse = String.valueOf(InHouse.getID());
                 System.out.println("in house: "+ inhouse);
                 orderType = inhouse;
+                DB_Insert.Inhouse(OrderInfo.getID(), InHouse.getID());
             }
 
             // assign  id to database: orderinfo: id, customerID; customer: customerID

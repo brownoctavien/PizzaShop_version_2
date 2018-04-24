@@ -42,12 +42,16 @@ public class generateReportsController implements Initializable{
     private PieChart pieChart;
 
     public void initialize(URL location, ResourceBundle resources) {
+
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                new PieChart.Data("In House", 0),
-                new PieChart.Data("Take Out",0),
-                new PieChart.Data("Delievery", 0));
+                new PieChart.Data("In House", 50),
+                new PieChart.Data("Take Out",50),
+                new PieChart.Data("Delievery", 50));
 
         pieChart.setData(pieChartData);
+        pieChart.setLabelsVisible(false);
+
+
 
     }
 
@@ -89,6 +93,7 @@ public class generateReportsController implements Initializable{
                     new PieChart.Data("Take Out",getTakeoutCost()),
                     new PieChart.Data("Delievery", getDelieveryCount()));
             pieChart.setData(pieChartData);
+            pieChart.setLabelsVisible(true);
 
 
 

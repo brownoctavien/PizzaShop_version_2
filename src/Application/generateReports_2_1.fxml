@@ -25,7 +25,7 @@
       </VBox>
    </right>
    <center>
-      <PieChart fx:id="pieChart" title="Pizza shop" BorderPane.alignment="CENTER" />
+      <PieChart fx:id="pieChart" BorderPane.alignment="CENTER" />
 
    </center>
 </BorderPane>

@@ -22,12 +22,14 @@ public class DebitCardController {
 
     public void next(ActionEvent event) throws Exception {
         if (!name_txt.getText().isEmpty() && !number_txt.getText().isEmpty() && !expiration_txt.getText().isEmpty() && !PIN_txt.getText().isEmpty()) {
+
+            //add to database
+            DB_Insert.DebitCard(number_txt.getText(),name_txt.getText(),expiration_txt.getText(),PIN_txt.getText());
             ((Node) event.getSource()).getScene().getWindow().hide();  //hide current window
+
 
             Main main = new Main();
             main.createWindow("Confirmation_4.fxml");
-
-            //add to database
         }
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

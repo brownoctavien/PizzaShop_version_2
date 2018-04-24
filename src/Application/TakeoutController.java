@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import static_class.OrderInfo;
+import static_class.TakeOut;
 import static_class.Transaction;
 
 import java.sql.Connection;
@@ -31,32 +32,9 @@ public class TakeoutController {
 
 
     public void next(ActionEvent event) throws Exception {
+
+        DB_Insert.Takeout(OrderInfo.getID(), TakeOut.getID(),numOfBox_txt.getText());
         ((Node)event.getSource()).getScene().getWindow().hide();  //hide current window
-
-        //assign payment type to database: orderinfo: Payment type
-    /*    if(numOfBox_txt.getText() != null && phoneNumb_txt.getText() != null){
-            //assign payment type to OrderInfo
-
-            String orderid = String.valueOf( OrderInfo.getID());
-            PreparedStatement preparedStatement = null;
-            String query = "";
-
-            try{
-                System.out.println("Adding data to database");
-
-                preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1, );
-                preparedStatement.setString(2, );
-                preparedStatement.setString(3, );
-
-            }catch (SQLException e) {
-                System.out.println("e");
-            } finally {
-                preparedStatement.execute();
-                preparedStatement.close();
-            }
-
-        }*/
 
         Main main = new Main();
         main.createWindow("Payment_3.fxml");

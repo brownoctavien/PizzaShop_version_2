@@ -12,6 +12,7 @@
     -fx-text-fill: #894619;
 
 }
+
 .button{
     -fx-text-fill: #006464;
     -fx-background-color: #c3c461;
@@ -21,11 +22,29 @@
     -fx-pref-width: 100;
     -fx-min-height: 50;
 }
+.chart{
+    -fx-legend-side: left;
+}
+.chart-legend {
+    -fx-background-color: rgba(165, 166, 82, 0.51);
+}
+.data0.chart-pie {
+    -fx-pie-color: #F0E68C;
+}
+.data1.chart-pie {
+    -fx-pie-color: #b88952;
+}
+.data2.chart-pie {
+    -fx-pie-color: #dba83b;
+}
+
 
 #assignOrder_btn{
     -fx-pref-width: 200;
     -fx-min-height: 100;
 }
+
+
 #generateReports_btn{
     -fx-pref-width: 200;
     -fx-min-height: 100;

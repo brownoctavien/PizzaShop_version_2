@@ -33,7 +33,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0">
                <children>
-                  <ComboBox prefWidth="150.0" promptText="Card Type">
+                  <ComboBox fx:id="type_cbox" prefWidth="150.0" promptText="Card Type">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:value="Visa" />
