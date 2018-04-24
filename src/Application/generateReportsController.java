@@ -115,7 +115,7 @@ public class generateReportsController implements Initializable
     public static void getCount(String TypeID)
     {
         String Type = TypeID.substring(0,1);
-        System.out.println("Type: "+ Type);
+        System.out.println("Type: " + Type);
 
         if (Type.equals("D"))
         {
@@ -131,6 +131,31 @@ public class generateReportsController implements Initializable
         }
 
     }
+
+    // methods for sums
+    public static void getSumForAllSales()
+    {
+        String sumQueryAllSales = "SELECT SUM(PaymentAmount) FROM OrderInfo";
+    }
+
+
+    public static void getSumForDelivery()
+    {
+        String sumQueryDeliverySales = "SELECT SUM(PaymentAmount) FROM OrderInfo WHERE TypeID LIKE 'D%'";
+    }
+
+    public static void getSumForInHouse()
+    {
+        String sumQueryInHouseSales = "SELECT SUM(PaymentAmount) FROM OrderInfo WHERE TypeID LIKE 'H%'";
+    }
+
+    public static void getSumForTakeOut()
+    {
+        String sumQueryTakeOutSales = "SELECT SUM(PaymentAmount) FROM OrderInfo WHERE TypeID LIKE 'T%'";
+    }
+
+
+    // methods for counts
     public static int getInHouseCount()
     {
         return InhouseCount;
@@ -148,7 +173,7 @@ public class generateReportsController implements Initializable
     {
         InhouseCount = Count;
     }
-    public static void settDelieveryCount(int Count)
+    public static void setDelieveryCount(int Count)
     {
         DelieveryCount = Count;
     }
