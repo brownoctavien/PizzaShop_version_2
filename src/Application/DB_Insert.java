@@ -93,7 +93,7 @@ public class DB_Insert {
 
             PreparedStatement preparedStatement = null;
             String query = "INSERT INTO DebitCard" +
-                    " (CardNumber,NameOnCard,ExpirationDate,PIN Number) " +
+                    " (CardNumber,NameOnCard,ExpirationDate,PINNumber) " +
                     "VALUES (?,?,?,?) ";
 
             try {
