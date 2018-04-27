@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -40,6 +41,12 @@ public class ConfirmationController implements Initializable{
 
         Main main = new Main();
         main.createWindow("Main_2.fxml");
+    }
+
+    public void confirm(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Order Confirm");
+        alert.showAndWait();
     }
 
 

@@ -16,7 +16,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="753.0" prefWidth="240.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="BOTTOM_CENTER" prefHeight="14.0" prefWidth="389.0">
                <children>
                   <TextField fx:id="name_txt" prefHeight="20.0" prefWidth="200.0" promptText="Customer Name" />
                </children>

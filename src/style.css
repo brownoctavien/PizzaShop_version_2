@@ -23,7 +23,7 @@
     -fx-min-height: 50;
 }
 .chart{
-    -fx-legend-side: left;
+    -fx-legend-side: bottom;
 }
 .chart-legend {
     -fx-background-color: rgba(165, 166, 82, 0.51);

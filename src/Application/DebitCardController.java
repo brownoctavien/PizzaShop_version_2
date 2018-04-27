@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 public class DebitCardController {
 
@@ -35,6 +36,28 @@ public class DebitCardController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter values");
             alert.showAndWait();
+        }
+    }
+    public void TextFieldCarDebitdNumberType(KeyEvent event){
+        String  c = event.getCharacter();
+        char[] s= c.toCharArray();
+
+        if(!Character.isDigit(s[0])){
+            event.consume();
+        }
+        if(number_txt.getLength() >=16){
+            event.consume();
+        }
+    }
+    public void TextFieldPINType(KeyEvent event){
+        String  c = event.getCharacter();
+        char[] s= c.toCharArray();
+
+        if(!Character.isDigit(s[0])){
+            event.consume();
+        }
+        if(PIN_txt.getLength() >=4){
+            event.consume();
         }
     }
 }

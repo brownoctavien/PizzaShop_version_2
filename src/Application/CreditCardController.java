@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 public class CreditCardController {
 
@@ -35,6 +36,18 @@ public class CreditCardController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter values");
             alert.showAndWait();
+        }
+    }
+
+    public void TextFieldCreditCardNumberType(KeyEvent event){
+        String  c = event.getCharacter();
+        char[] s= c.toCharArray();
+
+        if(!Character.isDigit(s[0])){
+            event.consume();
+        }
+        if(number_txt.getLength() >=16){
+            event.consume();
         }
     }
 }

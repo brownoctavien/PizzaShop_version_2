@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -44,12 +45,13 @@ public class generateReportsController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                new PieChart.Data("In House", 50),
-                new PieChart.Data("Take Out",50),
-                new PieChart.Data("Delievery", 50));
+                new PieChart.Data("In House ", 0),
+                new PieChart.Data("Take Out",0),
+                new PieChart.Data("Delievery", 0));
 
         pieChart.setData(pieChartData);
         pieChart.setLabelsVisible(false);
+
 
 
 
@@ -72,6 +74,11 @@ public class generateReportsController implements Initializable{
 
 
     public void generatePie() throws SQLException {
+        //reset count
+        InhouseCount=0;
+        DelieveryCount=0;
+        TakeoutCount=0;
+
         PreparedStatement preparedStatement =null;
         ResultSet resultSet =null;
         String query = "select * from OrderInfo ";
@@ -89,11 +96,13 @@ public class generateReportsController implements Initializable{
             System.out.println("take out: "+ getTakeoutCost());
 
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                    new PieChart.Data("In House", getInHouseCount()),
-                    new PieChart.Data("Take Out",getTakeoutCost()),
-                    new PieChart.Data("Delievery", getDelieveryCount()));
+                    new PieChart.Data("In House (" +InhouseCount + ")", getInHouseCount()),
+                    new PieChart.Data("Take Out (" +TakeoutCount+ ")",getTakeoutCost()),
+                    new PieChart.Data("Delievery (" +DelieveryCount+ ")", getDelieveryCount()));
             pieChart.setData(pieChartData);
             pieChart.setLabelsVisible(true);
+
+
 
 
 
@@ -108,6 +117,7 @@ public class generateReportsController implements Initializable{
     }
 
     public static void getCount(String TypeID){
+
         String Type = TypeID.substring(0,1);
         System.out.println("Type: "+ Type);
 

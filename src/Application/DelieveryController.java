@@ -4,7 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import static_class.Customer;
 import static_class.Delivery;
 import static_class.OrderInfo;
@@ -21,7 +23,7 @@ public class DelieveryController {
     @FXML
     private TextField city_txt;
     @FXML
-    private TextField state_txt;
+    private ComboBox state_cbox;
     @FXML
     private TextField zipCode_txt; // only accept number
     @FXML
@@ -41,11 +43,11 @@ public class DelieveryController {
 
     public void next(ActionEvent event) throws Exception {
 
-        if(!address1_txt.getText().isEmpty() && !city_txt.getText().isEmpty()&& ! state_txt.getText().isEmpty()&&
+        if(!address1_txt.getText().isEmpty() && !city_txt.getText().isEmpty()&& state_cbox.getValue() != null&&
                 !zipCode_txt.getText().isEmpty() && !phoneNum_txt.getText().isEmpty()){
 
             //add to delievery database
-            DB_Insert.Delievery(OrderInfo.getID(), Delivery.getID(),address1_txt.getText(),city_txt.getText(),state_txt.getText(),zipCode_txt.getText());
+            DB_Insert.Delievery(OrderInfo.getID(), Delivery.getID(),address1_txt.getText(),city_txt.getText(),state_cbox.getValue().toString(),zipCode_txt.getText());
 
             //update customer database and add address and phone number
             PreparedStatement preparedStatement = null;
@@ -87,4 +89,35 @@ public class DelieveryController {
         Main main = new Main();
         main.createWindow("AssignOrder_2_2.fxml");
     }
+
+    public void TextFieldZipCodeType(KeyEvent event){
+        String  c = event.getCharacter();
+        char[] s= c.toCharArray();
+
+        if(!Character.isDigit(s[0])){
+            event.consume();
+        }
+        if(zipCode_txt.getLength() >=5){
+            event.consume();
+        }
+    }
+
+    public void TextFieldPhoneType(KeyEvent event){
+        String  c = event.getCharacter();
+        char[] s= c.toCharArray();
+        int count =0;
+
+        if(!Character.isDigit(s[0])){
+            event.consume();
+        }
+
+        if(phoneNum_txt.getLength() == 3 || phoneNum_txt.getLength() == 7 ){
+            phoneNum_txt.appendText("-");
+        }
+
+        if(phoneNum_txt.getLength() >11){
+            event.consume();
+        }
+    }
+
 }
